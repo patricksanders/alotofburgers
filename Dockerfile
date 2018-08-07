@@ -11,6 +11,6 @@ RUN go build -a -v --ldflags '-extldflags "-static"' -tags netgo -installsuffix 
 FROM scratch
 ARG GOLANG_VERSION
 ENV GOLANG_VERSION=${GOLANG_VERSION}
-COPY --from=golang-build /program /
 COPY burgers.csv /
+COPY --from=golang-build /program /
 ENTRYPOINT ["/program"]
